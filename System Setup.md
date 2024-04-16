@@ -59,6 +59,7 @@ git clone [copied link]
 git checkout -b [branch_name]
 ```
 **Make changes to your code accordingly**
+
 4) Add files to branch:
 ```
 git add [filename]
