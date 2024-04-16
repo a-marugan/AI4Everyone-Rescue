@@ -7,7 +7,7 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 The following is a collection of links to notes and resources for the project background, code development, as well as guides and tutorials to get the system running.
 
 ### Getting Started!
-
+[Setting everything up from scratch](https://nw-syd-gitlab.cseunsw.tech/z9600614/VIP-AI4Everyone-Rescue/-/blob/main/System%20Setup.md)
 
 
 ### Resources
