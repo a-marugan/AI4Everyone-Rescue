@@ -52,7 +52,7 @@ This aims to guide new users on how to use github and to have good git-hygiene.
 1) When on the main repository 'AI4Everyone-Rescue' click the green '<> Code' button. Make sure you are in the 'Local/HHTTPS', copy link.
 2) Navigate to the directory you want this repository to be in. Go into the terminal for that directory:
 ```
-git clone https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html?fbclid=IwAR1BMtU7T_279HwpSls0bdZFd1uk6QV6IbMuIwyuK_uXMGryi9LjhW40L_8
+git clone [copied link]
 ```
 3) Make a new branch/ switching to branches:
 ```
