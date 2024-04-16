@@ -47,34 +47,5 @@ The first step of the guide is to install the virtual machine. Oracle's VirtualB
 The next step is to install ROS2, which is a version of ROS that the Virtual Robot League uses. The basic instructions to do this are listed below. For a more comprehensive list of instructions, please go to [LINK](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html?fbclid=IwAR1BMtU7T_279HwpSls0bdZFd1uk6QV6IbMuIwyuK_uXMGryi9LjhW40L_8).
 
 ## Using Github
-This aims to guide new users on how to use github and to have good git-hygiene.
-
-1) When on the main repository 'AI4Everyone-Rescue' click the green '<> Code' button. Make sure you are in the 'Local/HHTTPS', copy link.
-2) Navigate to the directory you want this repository to be in. Go into the terminal for that directory:
-```
-git clone [copied link]
-```
-3) Make a new branch/ switching to branches:
-```
-git checkout -b [branch_name]
-```
-**Make changes to your code accordingly**
-
-4) Add files to branch:
-```
-git add [filename]
-```
-5) Commit changes: Once you have added files onto the branch, you must commit and state your changes
-```
-git commit -m "commit message"
-```
-Please make sure to make it concise but not ambiguous eg:
-```
-git commit -m "implemented victim detection system"
-```
-6) Push your changes:
-```
-git push 
-```
-Congratulations! You have now pushed code into the repository and you should be able to see it on GitHub. It is good practice to not merge accept your own code. Further information on git commands can be found here [LINK](https://www.atlassian.com/git/glossary#commands)
+Follow this guide to learn and practice how to use git! [LINK](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/GitHub%20Guide.md)
    
