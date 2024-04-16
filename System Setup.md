@@ -76,5 +76,5 @@ git commit -m "implemented victim detection system"
 ```
 git push 
 ```
-Congratulations! You have now pushed code into the repository and you should be able to see it on GitHub. It is good practice to not merge accept your own code. 
+Congratulations! You have now pushed code into the repository and you should be able to see it on GitHub. It is good practice to not merge accept your own code. Further information on git commands can be found here [LINK](https://www.atlassian.com/git/glossary#commands)
    
