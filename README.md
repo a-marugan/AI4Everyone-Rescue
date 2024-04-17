@@ -5,11 +5,17 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 # Directory
 
 -> Documents
+
 ----> Project Documents
+
 ----> Reports 
+
 -> Guides
+
 ----> RoboRescue Rules
+
 ----> GitHub Guide
+
 -> Resources
 
 ### Getting Started!
