@@ -12,7 +12,9 @@ This document aims to provide a step-by-step guide for setting up the entire sys
 The current victim detection module uses Detectron2 which requires an Nvidia GPU. You can check this on your local machine by opening up device manager, then open up the dropdown menu for display adapters and find the name of your GPU. 
 
 ## Installing Ubuntu 22.04 via dual booting locally
-A guide to do this can be found [here](https://www.youtube.com/watch?v=u5QyjHIYwTQ). Once Ubuntu is setup a few more steps are required for the Nvidia drivers. Run the following commands:
+A guide to do this can be found [here](https://www.youtube.com/watch?v=u5QyjHIYwTQ). 
+** Note: This video demonstrates the installation of Ubuntu 18.04 however the process remain the same for all future versions as well.
+Once Ubuntu is setup a few more steps are required for the Nvidia drivers. Run the following commands:
 ```
 apt search nvidia-driver
 sudo apt update
