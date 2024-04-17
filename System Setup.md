@@ -33,7 +33,7 @@ The first step of the guide is to install the virtual machine. Oracle's VirtualB
 
 1) Download the VirtualBox application from [Official VM website](https://www.virtualbox.org/wiki/Downloads).
 2) Install and set up the VirtualBox application.
-3) Download the Ubuntu 18.04 image from ([Ubuntu Downloads]([https://docs.ros.org/en/iron/Installation/Ubuntu-Install-Debians.html](https://ubuntu.com/download/desktop))) - Download 22.04.4 LTS
+3) Download the Ubuntu 18.04 image from ([Ubuntu Downloads](https://ubuntu.com/download/desktop)) - Download 22.04.4 LTS
 4) This should download a single large file onto your computer - this step might take quite a while.
 5) From there, we need to set up a Virtual Machine with this Ubuntu files. Many youtube videos and guides can be found online. For convenience a guide has also been linked below.
 For a more in depth guide, checkout the following website which navigates through the process step by step with images: [Ubuntu Download Steps - with Images](https://medium.com/@fildzaanf/how-to-install-ubuntu-22-04-1-server-on-virtualbox-fe9ab1e0e8)
