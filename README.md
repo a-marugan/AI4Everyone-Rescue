@@ -24,5 +24,6 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 [Project Timeline](https://docs.google.com/spreadsheets/d/1dDKfOFkuubJEoErSXFr9yLhVBSVXlcf0W72cgF1LDYw/edit?usp=sharing)
 
 ### Quick Links
+[System Setup](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/System%20Setup.md)
 [RoboCup Website](https://www.robocup.org/leagues/10)
 
