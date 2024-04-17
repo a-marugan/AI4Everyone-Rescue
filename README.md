@@ -4,7 +4,13 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 
 # Directory
 
-The following is a collection of links to notes and resources for the project background, code development, as well as guides and tutorials to get the system running.
+-> Documents
+----> Project Documents
+----> Reports 
+-> Guides
+----> RoboRescue Rules
+----> GitHub Guide
+-> Resources
 
 ### Getting Started!
 [Setting everything up from scratch](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/System%20Setup.md)
