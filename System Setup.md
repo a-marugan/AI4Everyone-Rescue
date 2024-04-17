@@ -2,8 +2,8 @@
 
 This document aims to provide a step-by-step guide for setting up the entire system. The document will contain elements from other guides in the GitLab repository, but the other guides may go into the content in further depth. The scope of the document is as follows. 
 
-* Installing Ubuntu 18.04 via dual booting locally
-* Installing Ubuntu 18.04 via Virtual Machine
+* Installing Ubuntu 22.04 via dual booting locally
+* Installing Ubuntu 22.04 via Virtual Machine
 * Installing ROS2
 * Using GitHub
 
@@ -11,7 +11,7 @@ This document aims to provide a step-by-step guide for setting up the entire sys
 
 The current victim detection module uses Detectron2 which requires an Nvidia GPU. You can check this on your local machine by opening up device manager, then open up the dropdown menu for display adapters and find the name of your GPU. 
 
-## Installing Ubuntu 18.04 via dual booting locally
+## Installing Ubuntu 22.04 via dual booting locally
 A guide to do this can be found [here](https://www.youtube.com/watch?v=u5QyjHIYwTQ). Once Ubuntu is setup a few more steps are required for the Nvidia drivers. Run the following commands:
 ```
 apt search nvidia-driver
