@@ -4,9 +4,8 @@ This document aims to provide a step-by-step guide for setting up the entire sys
 
 * Installing Ubuntu 18.04 via dual booting locally
 * Installing Ubuntu 18.04 via Virtual Machine
-* Installing ROS Melodic
-* Installing the Exploration ROS Node
-* Installing the Victim Detection ROS Node
+* Installing ROS2
+* Using GitHub
 
 ### Note 
 
