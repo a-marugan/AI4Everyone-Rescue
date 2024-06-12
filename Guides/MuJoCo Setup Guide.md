@@ -103,7 +103,7 @@ cd build
 cmake ..
 make -j4
 ```
-Now open the simulation (`./unitree_mujoco`) and run this in the `build` directory:
+Now open the simulation (`./unitree_mujoco`) and run this in the `build` directory on a new terminal:
 ```
 ./stand_go2
 ```
@@ -111,5 +111,25 @@ This example code starts when you press enter. You will see that your Go2 robot 
 
 ## 6. Debug
 
-If you cannot run any `./unitree_mujoco` or `./stand_go2` commands, try go through the folder and double-click the executable `unitree_mujoco`.  
+- If you cannot run any `./unitree_mujoco` or `./stand_go2` commands:
+  - Go to the folder and double-click the executable `unitree_mujoco` to start the MuJoCo.  
 ![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/ec9d7736-9af5-448f-aac2-220a1b9f6eb4)  
+  - Then we use a python script to test it. Git clone `unitree_sdk2_python` repo on your root directory `unitree`.
+  ```
+  cd ~/unitree/
+  sudo apt install python3-pip
+  git clone https://github.com/unitreerobotics/unitree_sdk2_python.git
+  cd unitree_sdk2_python
+  pip3 install -e .
+  ```
+  - Then go directory `~/unitree/unitree_mujoco/example/python` and open the file `stand_go2.py`.
+  ```
+  cd ~/unitree/unitree_mujoco/example/python
+  gedit stand_go2.py
+  ```
+  - Correct typos in line 32 and line 34. Change name `ChannelFactortyInitialize` to `ChannelFactoryInitialize`.
+  - Now run the python script:
+  ```
+  python3 stand_go2.py
+  ```
+  - You should see the Go2 robot stands up and sits down.
