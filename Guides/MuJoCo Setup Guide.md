@@ -90,9 +90,6 @@ Try running this command in the `build` directory. The Go2 robot will pop up in 
 ```
 ./unitree_mujoco
 ```
-If the simulation do not pop up, try go through the folder and double-click the executable `unitree_mujoco`.  
-![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/ec9d7736-9af5-448f-aac2-220a1b9f6eb4)  
-
 Finally, in order to test the Go2 robot, go to the directory `~/unitree/unitree_mujoco/example/cpp`  
 and copy the `stand_go2.cpp` file into the directory `~/unitree/unitree_mujoco/simulate/src`.  
 
@@ -100,7 +97,7 @@ Then go back to `simulate` directory add this line to the `CMakeLists.txt`:
 ```
 add_executable(stand_go2 src/stand_go2.cpp)
 ```
-and `cmake` the `simulate` directory again.
+`cmake` the `simulate` directory again:
 ```
 cd build
 cmake ..
@@ -111,3 +108,8 @@ Now open the simulation (`./unitree_mujoco`) and run this in the `build` directo
 ./stand_go2
 ```
 This example code starts when you press enter. You will see that your Go2 robot stands up and sits down.
+
+## 6. Debug
+
+If you cannot run any `./unitree_mujoco` or `./stand_go2` commands, try go through the folder and double-click the executable `unitree_mujoco`.  
+![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/ec9d7736-9af5-448f-aac2-220a1b9f6eb4)  
