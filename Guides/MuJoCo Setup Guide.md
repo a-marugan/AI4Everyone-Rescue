@@ -93,8 +93,21 @@ Try running this command in the `build` directory. The Go2 robot will pop up in 
 If the simulation do not pop up, try go through the folder and double-click the executable `unitree_mujoco`.  
 ![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/ec9d7736-9af5-448f-aac2-220a1b9f6eb4)  
 
-Finally, in order to test the Go2 robot, go to the path `~/unitree/unitree_mujoco/example/python` and run the python code.
+Finally, in order to test the Go2 robot, go to the directory `~/unitree/unitree_mujoco/example/cpp`  
+and copy the `stand_go2.cpp` file into the directory `~/unitree/unitree_mujoco/simulate/src`.  
+
+Then go back to `simulate` directory add this line to the `CMakeLists.txt`:
 ```
-python3 stand_go2.py
+add_executable(stand_go2 src/stand_go2.cpp)
 ```
-This example code starts when you press enter. You will see that your Go2 robot stand up and sit down.
+and `cmake` the `simulate` directory again.
+```
+cd build
+cmake ..
+make -j4
+```
+Now open the simulation (`./unitree_mujoco`) and run this in the `build` directory:
+```
+./stand_go2
+```
+This example code starts when you press enter. You will see that your Go2 robot stands up and sits down.
