@@ -15,6 +15,7 @@ Then, git clone `unitree_mujoco` repo.
 ```
 git clone https://github.com/unitreerobotics/unitree_mujoco.git
 ```
+The instructions here are based on `unitree_mujoco` repo. For more information, please go to: `https://github.com/unitreerobotics/unitree_mujoco`.
 
 ## 2. Git clone `unitree_sdk2` repo
 
@@ -62,4 +63,38 @@ Test MuJoCo by running the command in any directory.
 ```
 simulate
 ```
-If the mujoco simulator pops up, the installation is successful.
+If the mujoco simulator pops up, the installation is successful.  
+  
+If this error occur: `Illegal instruction (core dumped)`, and you saw a green turtle on the bottom right corner of your virtual machine,
+![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/8ca26552-0a07-4488-9685-4a99881c8c06)  
+then you need to disable Hyper-V for Windows 11 host by following [this link](https://www.makeuseof.com/windows-11-disable-hyper-v/).
+
+## 4. Compile `unitree_mujoco`
+
+Install `yaml-cpp` for reading configuration files.
+```
+sudo apt install libyaml-cpp-dev
+```
+Go to the directory `simulate` inside `unitree_mujoco`.
+```
+cd ~/unitree/unitree_mujoco/simulate
+```
+Make a `build` directory and build it.
+```
+mkdir build && cd build
+cmake ..
+make -j4
+```
+## 5. Testing Go2 robot
+Try running this command in the `build` directory. The Go2 robot will pop up in the simulation if successful.
+```
+./unitree_mujoco
+```
+If the simulation do not pop up, try go through the folder and double-click the executable `unitree_mujoco`.  
+![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/ec9d7736-9af5-448f-aac2-220a1b9f6eb4)  
+
+Finally, in order to test the Go2 robot, go to the path `~/unitree/unitree_mujoco/example/python` and run the python code.
+```
+python3 stand_go2.py
+```
+This example code starts when you press enter. You will see that your Go2 robot stand up and sit down.
