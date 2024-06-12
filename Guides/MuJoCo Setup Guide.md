@@ -122,7 +122,7 @@ This example code starts when you press enter. You will see that your Go2 robot 
   cd unitree_sdk2_python
   pip3 install -e .
   ```
-  - Then go directory `~/unitree/unitree_mujoco/example/python` and open the file `stand_go2.py`.
+  - Then go to directory `~/unitree/unitree_mujoco/example/python` and open the file `stand_go2.py`.
   ```
   cd ~/unitree/unitree_mujoco/example/python
   gedit stand_go2.py
