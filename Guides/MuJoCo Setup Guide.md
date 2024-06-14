@@ -15,7 +15,7 @@ Then, git clone `unitree_mujoco` repo.
 ```
 git clone https://github.com/unitreerobotics/unitree_mujoco.git
 ```
-The instructions here are based on `unitree_mujoco` repo. For more information, please go to: `https://github.com/unitreerobotics/unitree_mujoco`.
+The instructions here are based on `unitree_mujoco` repo. For more information, please go to: https://github.com/unitreerobotics/unitree_mujoco.
 
 ## 2. Git clone `unitree_sdk2` repo
 
@@ -65,7 +65,7 @@ simulate
 ```
 If the mujoco simulator pops up, the installation is successful.  
   
-If this error occur: `Illegal instruction (core dumped)`, and you saw a green turtle on the bottom right corner of your virtual machine,
+If this error occur: `Illegal instruction (core dumped)`, and you saw a green turtle on the bottom right corner of your virtual machine,  
 ![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/8ca26552-0a07-4488-9685-4a99881c8c06)  
 then you need to disable Hyper-V for Windows 11 host by following [this link](https://www.makeuseof.com/windows-11-disable-hyper-v/).
 
@@ -90,24 +90,21 @@ Try running this command in the `build` directory. The Go2 robot will pop up in 
 ```
 ./unitree_mujoco
 ```
-Finally, in order to test the Go2 robot, go to the directory `~/unitree/unitree_mujoco/example/cpp`  
-and copy the `stand_go2.cpp` file into the directory `~/unitree/unitree_mujoco/simulate/src`.  
-
-Then go back to `simulate` directory add this line to the `CMakeLists.txt`:
+Finally, in order to test the Go2 robot, start a new terminal and go to the directory `~/unitree/unitree_mujoco/example/cpp`.
 ```
-add_executable(stand_go2 src/stand_go2.cpp)
+cd ~/unitree/unitree_mujoco/example/cpp
 ```
-`cmake` the `simulate` directory again:
+Make a `build` directory and compile the example file `stand_go2.cpp`.
 ```
-cd build
+mkdir build && cd build
 cmake ..
 make -j4
 ```
-Now open the simulation (`./unitree_mujoco`) and run this in the `build` directory on a new terminal:
+Now run this in the `build` directory:
 ```
 ./stand_go2
 ```
-This example code starts when you press enter. You will see that your Go2 robot stands up and sits down.
+This example code starts when you press enter. You will see that your Go2 robot stands up and lies down if successful.
 
 ## 6. Debug
 
@@ -132,4 +129,4 @@ This example code starts when you press enter. You will see that your Go2 robot 
   ```
   python3 stand_go2.py
   ```
-  - You should see the Go2 robot stands up and sits down.
+  - You should see the Go2 robot stands up and lies down.
