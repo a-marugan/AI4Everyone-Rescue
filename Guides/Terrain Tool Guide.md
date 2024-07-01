@@ -34,6 +34,7 @@ ROBOT_SCENE = "../unitree_robots/" + ROBOT + "/scene_VIP.xml"
 ./unitree_mujoco
 ```
 Alternatively, you may run `simulate` and drag the `scene_VIP.xml` file into the simulator.
+![drag and drop](https://github.com/a-marugan/AI4Everyone-Rescue/assets/10972892/ead4eeb2-ad1f-4323-88db-a81049b2d372)
 
 
 # Function Explanation
@@ -121,6 +122,7 @@ invert_grayscale=False # Invert pixel
 
 # Euler Orientation parameters
 For the `AddBox` and `AddGeometry` functions, the 3 euler orientation parameters correspond to the roll, pitch and yaw respectively. The positive directions for each axis are as follows:
+![Roll-Pitch-Yaw](https://github.com/a-marugan/AI4Everyone-Rescue/assets/10972892/c87b6f6a-505a-4ab5-a75b-0312c0da49c0)
 
 
 
