@@ -131,10 +131,9 @@ As a brief demonstration, see the following code and the corresponding terrain.
 ## Code
 
 ![example code](https://github.com/a-marugan/AI4Everyone-Rescue/assets/10972892/0b7640ac-e0f9-48ac-9065-93528966755f)
-![example code](https://github.com/a-marugan/AI4Everyone-Rescue/assets/10972892/0b7640ac-e0f9-48ac-9065-93528966755f)
 
 ## Output
 
 ![example output](https://github.com/a-marugan/AI4Everyone-Rescue/assets/10972892/fa6247ad-3408-4cd3-8691-40dac90bef07)
-![example output](https://github.com/a-marugan/AI4Everyone-Rescue/assets/10972892/fa6247ad-3408-4cd3-8691-40dac90bef07)
+
 
