@@ -44,14 +44,14 @@ To create desired terrain, modify the main function in `terrain_generator.py`. B
 Add a cube, parameters:
 ```python
 position=[1.0, 0.0, 0.0] # Center position
-euler=[0.0, 0.0, 0.0] # Euler orientation (roll, pitch, yaw)
+euler=[0.0, 0.0, 0.0] # Euler orientation (roll, pitch, yaw) in RADIANS
 size=[0.1, 0.1, 0.1] # Size, length x width x height
 ``` 
 ##### 2. `AddGeometry`
 Add a geometry, parameters:
 ```python
 position=[1.0, 0.0, 0.0] # Center position
-euler=[0.0, 0.0, 0.0] # Euler orientation (roll, pitch, yaw)
+euler=[0.0, 0.0, 0.0] # Euler orientation (roll, pitch, yaw) in RADIANS
 size=[0.1, 0.1, 0.1] # Size, some geometries only require the first two parameters
 geo_type="cylinder" # Geometry type, supports "plane", "sphere", "capsule", "ellipsoid", "cylinder", "box"
 ``` 
@@ -121,10 +121,17 @@ image_scale=[1.0, 1.0],  # Image scaling factors
 invert_grayscale=False # Invert pixel
 ```
 
-# Euler Orientation parameters
-For the `AddBox` and `AddGeometry` functions, the 3 euler orientation parameters correspond to the roll, pitch and yaw respectively. The positive directions for each axis are as follows:
+# Euler Orientation Parameters
+For **all** functions except for `AddSuspendStairs` and `AddStairs`, the 3 euler orientation parameters correspond to the roll, pitch and yaw respectively. The positive directions for each axis are as follows:
 
 ![Roll-Pitch-Yaw](https://github.com/a-marugan/AI4Everyone-Rescue/assets/10972892/c87b6f6a-505a-4ab5-a75b-0312c0da49c0)
 
+As a brief demonstration, see the following code and the corresponding terrain. 
+
+## Code
+
+
+
+## Output
 
 
