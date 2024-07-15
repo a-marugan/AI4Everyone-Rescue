@@ -20,6 +20,7 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 
 ### Guides
 [System Setup](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/System%20Setup.md)
+
 [Mujoco Setup](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/MuJoCo%20Setup%20Guide.md)
  
 ### Project Links
