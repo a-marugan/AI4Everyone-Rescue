@@ -23,6 +23,8 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 
 [Mujoco Setup](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/MuJoCo%20Setup%20Guide.md)
 
+[Git Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Git%20Basics.md)
+
 [ROS Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/ROS%20Basics.md)
 
 [Terrain Tool Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Terrain%20Tool%20Guide.md)
