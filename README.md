@@ -24,6 +24,8 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 [Mujoco Setup](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/MuJoCo%20Setup%20Guide.md)
 
 [Terrain Tool Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Terrain%20Tool%20Guide.md)
+
+[Creating Custom Victim Dataset](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Create%20Custom%20Victim%20Dataset.md)
  
 ### Project Links
 [Meeting Minutes](https://unsw.sharepoint.com/sites/SocialAI-VIP/_layouts/15/Doc.aspx?sourcedoc={a024e35e-4295-41bc-8f1a-4f79906ad1fb}&action=edit&wd=target%282024%20T1.one%7C93a04942-3d8a-4021-b246-8a639bf305e2%2FSchedule%7C58a8a687-2355-4e89-9ece-1681f38b3db9%2F%29&wdorigin=NavigationUrl)
