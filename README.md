@@ -23,6 +23,8 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 
 [Mujoco Setup](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/MuJoCo%20Setup%20Guide.md)
 
+[ROS Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/ROS%20Basics.md)
+
 [Terrain Tool Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Terrain%20Tool%20Guide.md)
 
 [Creating Custom Victim Dataset](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Create%20Custom%20Victim%20Dataset.md)
