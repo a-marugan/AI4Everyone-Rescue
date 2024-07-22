@@ -9,6 +9,7 @@ This guide walks you through how to install MuJoCo simulator, and how to import 
 
 Choose a directory as your root directory. For this example, we choose `unitree` as our root directory, and `cd` into it.
 ```
+mkdir unitree
 cd ~/unitree
 ```
 Then, git clone `unitree_mujoco` repo.
@@ -27,14 +28,12 @@ Then git clone `unitree_sdk2` repo and `cd` into it.
 ```
 git clone https://github.com/unitreerobotics/unitree_sdk2.git
 cd unitree_sdk2/
-chmod +x ./install.sh
-sudo ./install.sh
 ```
-Make a `build` directory and build the repo.
+Make a `build` directory and install the unitree_sdk2 to your system directory.
 ```
 mkdir build && cd build
-cmake ..
-make
+cmake .. -DCMAKE_INSTALL_PREFIX=/opt/unitree_robotics
+sudo make install
 ```
 
 ## 3. Install MuJoCo
@@ -109,9 +108,19 @@ This example code starts when you press enter. You will see that your Go2 robot 
 ## 6. Debug
 
 - If you cannot run any `./unitree_mujoco` or `./stand_go2` commands:
-  - Go to the folder and double-click the executable `unitree_mujoco` to start the MuJoCo.  
+  - Go to your bashrc file
+  ```
+  gedit ~/.bashrc
+  ```
+  - Comment out the following lines if you have included them:
+  ```
+  # source /opt/ros/humble/setup.bash
+  # source ~/unitree/unitree_ros2/setup.sh
+  # source ~/unitree/unitree_ros2/setup_local.sh
+  ```
+  - If you still have this issue, go to the folder and double-click the executable `unitree_mujoco` to start the MuJoCo.  
 ![image](https://github.com/a-marugan/AI4Everyone-Rescue/assets/147914534/ec9d7736-9af5-448f-aac2-220a1b9f6eb4)  
-  - Then we use a python script to test it. Git clone `unitree_sdk2_python` repo on your root directory `unitree`.
+  - If the Go2 robot is loaded into MuJoCo, then we use a python script to test it. Git clone `unitree_sdk2_python` repo on your root directory `unitree`.
   ```
   cd ~/unitree/
   sudo apt install python3-pip
