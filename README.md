@@ -27,6 +27,8 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 
 [ROS2 Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/ROS%20Basics.md)
 
+[Latex Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Latex%20Basics.md)
+
 [Terrain Tool Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Terrain%20Tool%20Guide.md)
 
 [Coding Style Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Coding%20Style%20Guide.md)
