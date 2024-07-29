@@ -29,7 +29,7 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 
 [Terrain Tool Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Terrain%20Tool%20Guide.md)
 
-[Coding Style Guide]()
+[Coding Style Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Coding%20Style%20Guide.md)
 
 [Creating Custom Victim Dataset](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Create%20Custom%20Victim%20Dataset.md)
  
