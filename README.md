@@ -25,9 +25,11 @@ The AI-4-Everyone project involves the development of a **virtual** Urban Search
 
 [Git Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Git%20Basics.md)
 
-[ROS Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/ROS%20Basics.md)
+[ROS2 Basics](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/ROS%20Basics.md)
 
 [Terrain Tool Guide](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Terrain%20Tool%20Guide.md)
+
+[Coding Style Guide]()
 
 [Creating Custom Victim Dataset](https://github.com/a-marugan/AI4Everyone-Rescue/blob/main/Guides/Create%20Custom%20Victim%20Dataset.md)
  
