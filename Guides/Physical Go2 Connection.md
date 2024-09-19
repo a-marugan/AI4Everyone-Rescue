@@ -80,12 +80,29 @@ If you do not use a virtual machine to run ubuntu, skip this part.
 First, we need to bridge the network to VirtualBox. More information could be found on this [link](https://wiki.dave.eu/index.php/VirtualBox_Network_Configuration).
 
 From the VBox main window, select your VM and choose Settings from the toolbar.
+![image](https://github.com/user-attachments/assets/62d69b81-fe9d-4a04-a980-dce4159c8e0b)
+
+Go to Network tab, and change the network adapter from 'NAT' to 'Bridged Adapter', then press 'OK'
+![image](https://github.com/user-attachments/assets/79ed74b3-25d7-4c2c-9d17-8346f1678bd5)
 
 
+Then in your VM Settings, go to Network tab, click the icon circled in red. After that, choose 'IPv4', choose 'Manual', type the address as follow and click 'Apply'.
+![image](https://github.com/user-attachments/assets/2fcca4ca-e201-4486-8119-0e075f64a265)
+Noted that after this step, your VM will not able to access the internet. If you still need access to the internet, do this step last.
+
+Finally, restart your VM. You are now ready to connect to Go2.
 
 ### 2.2 Modify `setup.sh` file in `unitree_ros2`
 
-Go to your `unitree_ros2` directory.
+In your terminal, type
+```
+ip link
+```
+![image](https://github.com/user-attachments/assets/69718ca3-1ca9-49c2-bdab-3c0195cd03b6)
+
+Remember this network interface. Yours maybe different. You will use your network interface for connecting Go2. In this case is `enp0s3`.
+
+Now, go to your `unitree_ros2` directory.
 ```
 cd ~/unitree/unitree_ros2
 ```
@@ -94,10 +111,10 @@ Modify the `setup.sh` file.
 gedit setup.sh
 ```
 The file should look like this:
-
+![image](https://github.com/user-attachments/assets/3a67aaaa-2ad6-4b62-9c82-d7693d52b92f)
 - Noted that we need to change `foxy` to `humble`.
 - Noted that `unitree_ros2` is inside `unitree` root directory.
-- Noted that `enp0s3` is the network interface name of Go2 robot connected. Change to the correct name mentioned in part 2.1.
+- Noted that `enp0s3` is the network interface to connect with Go2. Change to the your correct name mentioned above.
 
 ### 2.3 Connect and Test
 
@@ -120,11 +137,8 @@ Another test would be pinging the Go2 ip address, type
 ```
 ping 192.168.123.161
 ```
-The results should look like this if successful.
+You will receive responses if successful.
 
 
-
-
-## 3. Run example codes
 
 
