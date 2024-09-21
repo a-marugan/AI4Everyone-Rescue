@@ -140,5 +140,18 @@ ping 192.168.123.161
 You will receive responses if successful.
 
 
+## 3. Example Codes
 
+There are a bunch of example codes in `unitree_sdk2`. 
+![image](https://github.com/user-attachments/assets/59a71ba2-633f-454b-a19e-b4697c06a0cd)
 
+To execute those examples, first source the ros2 environment, then run the files with your Go2 network interface.
+
+For example, to run `stand_example_go2`, type
+```
+source ~/unitree/unitree_ros2/setup.sh
+cd ~/unitree/unitree_sdk2/build/bin
+./stand_example_go2 enp0s3
+```
+
+Feel free to play around the example codes. One of the suggestion is `sportmode_test.cpp` under the directory `~/unitree/unitree_sdk2/example/high_level`. If you modify some codes, simply rebuild `unitree_sdk2` in step 1.1.
