@@ -1,10 +1,10 @@
 HEALTH AND SAFETY GUIDELINES FOR THE ROBOCUP RESCUE COMPETITION
 
 1. Workplace Setup
-  a. Ensure the workspace is well-ventilated and has adequate conditions for working
-  b. Keep workspace free of unnecessary objects, equipment and material to prevent obstructions and hazards that could cause injury
-  c. Workplace must have sufficient space to move, test and operate the robot without risk of injuring any operating persons or obstructing the robot’s path
-  d. Prohibit any food and drink in and around the area in which the robot is being tested
+  a. Ensure the workspace is well-ventilated and has adequate conditions for working <br>
+  b. Keep workspace free of unnecessary objects, equipment and material to prevent obstructions and hazards that could cause injury <br>
+  c. Workplace must have sufficient space to move, test and operate the robot without risk of injuring any operating persons or obstructing the robot’s path <br>
+  d. Prohibit any food and drink in and around the area in which the robot is being tested <br>
   e. Ensure the testing area is sized appropriately according to the requirements of the particular task
   f. Create a testing area suitable for the robot’s movement to prevent any damage to the robot’s mechanisms
 
