@@ -70,32 +70,21 @@ private:
             else {
                 vyaw_ = -maxSpeed;
             }
+            sportClient_.Move(reqMsg_, vx_, vy_, vyaw_);
+            reqPuber_->publish(reqMsg_);
         }
         else if (abs(xError) > 0.1 || abs(yError) > 0.1) {
             // else if target not reached
             vx_ = maxSpeed;
+            sportClient_.Move(reqMsg_, vx_, vy_, vyaw_);
+            reqPuber_->publish(reqMsg_);
+        } 
+        else {
+            sportClient_.StopMove(reqMsg_);
+            reqPuber_->publish(reqMsg_);
         }
-
-        sportClient_.Move(reqMsg_, vx_, vy_, vyaw_);
-        reqPuber_->publish(reqMsg_);
         
     }
-
-    // float computePIDcontrol(float input, float setpoint, float kp, float ki, float kd) 
-    // {
-    //     error_ = setpoint - input;
-    //     integral_ = integral_ + error_ * dt;
-    //     derivative_ = (error_ - prevError_) / dt;
-    //     float output = kp * error_ + ki * integral_ + kd * derivative_;
-    //     prevError_ = error_;
-
-    //     // temp speed cap
-    //     float maxSpeed = 0.3;
-    //     if (output > maxSpeed) output = maxSpeed;
-    //     if (output < maxSpeed) output = -maxSpeed;
-
-    //     return output;
-    // }
 
     void stateCallback(unitree_go::msg::SportModeState::SharedPtr data)
     {
