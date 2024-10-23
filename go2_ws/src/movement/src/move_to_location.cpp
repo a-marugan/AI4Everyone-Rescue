@@ -1,4 +1,3 @@
-
 #include <unistd.h>
 #include <cmath>
 
@@ -6,7 +5,7 @@
 #include "unitree_go/msg/sport_mode_state.hpp"
 #include "unitree_api/msg/request.hpp"
 #include "common/ros2_sport_client.h"
-#include "interfaces/srv/position.hpp"
+#include "interfaces/srv/coordinate.hpp"
 
 static const float dt = 0.5;     // Time step in seconds
 static const float maxSpeed = 0.3;
@@ -21,12 +20,13 @@ public:
         // Create the reqest publisher
         reqPuber_ = this->create_publisher<unitree_api::msg::Request>("/api/sport/request", 10);
         // Create the position service 
-        positionSrv_ = create_service<interfaces::srv::Position>("position", std::bind(&MoveToLocation::serviceCallback, this, std::placeholders::_1, std::placeholders::_2));
+        coordinateSrv_ = create_service<interfaces::srv::Coordinate>("coordinate", std::bind(&MoveToLocation::serviceCallback, this, std::placeholders::_1, std::placeholders::_2));
         // Create a timer when called
         timer_ = this->create_wall_timer(std::chrono::milliseconds(static_cast<int>(dt * 1000)), std::bind(&MoveToLocation::timerCallback, this));
 
         // Initialise variables
         startTimer_ = false;
+        targetReached_ = false;
         currentX_ = 0;
         currentY_ = 0;
         currentYaw_ = 0;
@@ -37,14 +37,22 @@ public:
 
 private:
 
-    void serviceCallback(const std::shared_ptr<interfaces::srv::Position::Request> request, std::shared_ptr<interfaces::srv::Position::Response> response) 
+    void serviceCallback(const std::shared_ptr<interfaces::srv::Coordinate::Request> request, std::shared_ptr<interfaces::srv::Coordinate::Response> response) 
     {
         targetX_ = request->x;
         targetY_ = request->y;
         targetYaw_ = std::atan2(targetY_ - currentY_, targetX_ - currentX_);
 
         startTimer_ = true;
-        response->success = true;
+
+        if (targetReached_) {
+            response->success = true;
+            targetReached_ = false;
+        }
+        else {
+            response->success = false;
+        }
+
     }
 
     void timerCallback() 
@@ -82,6 +90,7 @@ private:
         else {
             sportClient_.StopMove(reqMsg_);
             reqPuber_->publish(reqMsg_);
+            targetReached_ = true;
         }
         
     }
@@ -97,7 +106,7 @@ private:
 
     rclcpp::Subscription<unitree_go::msg::SportModeState>::SharedPtr stateSuber_;
     rclcpp::Publisher<unitree_api::msg::Request>::SharedPtr reqPuber_;
-    rclcpp::Service<interfaces::srv::Position>::SharedPtr positionSrv_;
+    rclcpp::Service<interfaces::srv::Coordinate>::SharedPtr coordinateSrv_;
     rclcpp::TimerBase::SharedPtr timer_;
 
     unitree_api::msg::Request reqMsg_;
@@ -108,6 +117,7 @@ private:
     float vx_, vy_, vyaw_;
     
     bool startTimer_;
+    bool targetReached_;
 
     float error_, prevError_, integral_, derivative_;
 };
@@ -115,7 +125,7 @@ private:
 int main(int argc, char *argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<MoveToLocation>());   //Run ROS2 node
+    rclcpp::spin(std::make_shared<MoveToLocation>());
     rclcpp::shutdown();
     return 0;
 }
