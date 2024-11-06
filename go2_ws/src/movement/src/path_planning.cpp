@@ -24,9 +24,18 @@ public:
         }
 
         // Initialise path points
+        // pathPoints_.push_back(Point(1.0, 0.0));
+        // pathPoints_.push_back(Point(1.0, -1.0));
+        // pathPoints_.push_back(Point(0.0, -1.0));
+        // pathPoints_.push_back(Point(0.0, 0.0));
+
         pathPoints_.push_back(Point(1.0, 0.0));
+        pathPoints_.push_back(Point(2.0, 0.0));
+        pathPoints_.push_back(Point(1.0, 0.0));
+        pathPoints_.push_back(Point(1.0, -1.5));
+        pathPoints_.push_back(Point(0.0, 0.0));
+        pathPoints_.push_back(Point(-1.0, -1.0));
         pathPoints_.push_back(Point(1.0, -1.0));
-        pathPoints_.push_back(Point(0.0, -1.0));
         pathPoints_.push_back(Point(0.0, 0.0));
 
         // Call the first position service
@@ -54,10 +63,10 @@ private:
         if (future.get()) {
             if (future.get()->success) {    
 
-                RCLCPP_INFO(get_logger(), "Successfully reached Points.");
+                RCLCPP_INFO(get_logger(), "Successfully received motion service.");
                 pathPointsIndex_++;
                 if (pathPointsIndex_ < pathPoints_.size()) {
-                    // Move to point
+                    // Move to next point
                     callCoordinateService(pathPoints_[pathPointsIndex_]);
                 }
                 else {
@@ -68,7 +77,7 @@ private:
                 
             } else {
                 // Keep calling until the motion is finished
-                RCLCPP_INFO(get_logger(), "Executing motion...");
+                RCLCPP_INFO(get_logger(), "Please wait, robot executing previous motion.");
                 callCoordinateService(pathPoints_[pathPointsIndex_]);
             }   
         } else {

@@ -8,7 +8,7 @@
 #include "interfaces/srv/coordinate.hpp"
 
 static const float dt = 0.5;     // Time step in seconds
-static const float maxSpeed = 0.3;
+static const float maxSpeed = 0.5;
 
 class MoveToLocation : public rclcpp::Node
 {
@@ -25,8 +25,7 @@ public:
         timer_ = this->create_wall_timer(std::chrono::milliseconds(static_cast<int>(dt * 1000)), std::bind(&MoveToLocation::timerCallback, this));
 
         // Initialise variables
-        startTimer_ = false;
-        targetReached_ = false;
+        phase_ = 0;
         currentX_ = 0;
         currentY_ = 0;
         currentYaw_ = 0;
@@ -39,60 +38,119 @@ private:
 
     void serviceCallback(const std::shared_ptr<interfaces::srv::Coordinate::Request> request, std::shared_ptr<interfaces::srv::Coordinate::Response> response) 
     {
+        // If robot still moving, ignore call
+        if (phase_ != 0) {
+            response->success = false;
+            return;
+        }
+
         targetX_ = request->x;
         targetY_ = request->y;
-        targetYaw_ = std::atan2(targetY_ - currentY_, targetX_ - currentX_);
+        if (targetX_ == previousX_ && targetY_ == previousY_) targetYaw_ = currentYaw_;
+        else if (targetY_ == previousY_ && targetX_ > previousX_) targetYaw_ = 0; 
+        else if (targetY_ == previousY_ && targetX_ < previousX_) targetYaw_ = M_PI; 
+        else if (targetX_ == previousX_ && targetY_ > previousY_) targetYaw_ = M_PI / 2.0; 
+        else if (targetX_ == previousX_ && targetY_ < previousY_) targetYaw_ = -M_PI / 2.0; 
+        else targetYaw_ = std::atan2(targetY_ - previousY_, targetX_ - previousX_);
 
-        startTimer_ = true;
+        while (targetYaw_ > M_PI) targetYaw_ -= 2 * M_PI;
+        while (targetYaw_ <= M_PI) targetYaw_ += 2 * M_PI;
 
-        if (targetReached_) {
-            response->success = true;
-            targetReached_ = false;
-        }
-        else {
-            response->success = false;
-        }
+        // Initialise previousDistanceError_
+        previousDistanceError_ = 0;
+        
+        // Receive new instructions successfully
+        phase_ = 1;
+        response->success = true;
 
     }
 
     void timerCallback() 
     {
-        // If service not called, do nothing
-        if (startTimer_ == false) return;
+        if (phase_ == 1) turn();
 
-        // Calculate error
-        float yawError = targetYaw_ - currentYaw_;
-        while (yawError > M_PI) yawError -= 2 * M_PI;
-        while (yawError < -M_PI) yawError += 2 * M_PI;
-        float xError = targetX_ - currentX_;
-        float yError = targetY_ - currentY_;
-        vx_ = 0;
-        vy_ = 0;
-        vyaw_ = 0;
+        if (phase_ == 2) forward();
 
-        if (abs(yawError) > 0.1) {
-            // If yaw not reached
-            if (yawError > 0) {
-                vyaw_ = maxSpeed;
-            }
-            else {
-                vyaw_ = -maxSpeed;
-            }
-            sportClient_.Move(reqMsg_, vx_, vy_, vyaw_);
-            reqPuber_->publish(reqMsg_);
-        }
-        else if (abs(xError) > 0.1 || abs(yError) > 0.1) {
-            // else if target not reached
-            vx_ = maxSpeed;
-            sportClient_.Move(reqMsg_, vx_, vy_, vyaw_);
-            reqPuber_->publish(reqMsg_);
-        } 
-        else {
+        if (phase_ == 3) {
             sportClient_.StopMove(reqMsg_);
             reqPuber_->publish(reqMsg_);
-            targetReached_ = true;
+            previousX_ = targetX_;
+            previousY_ = targetY_;
+            previousYaw_ = targetYaw_;
+            phase_ = 0;
         }
-        
+    }
+
+    void turn() {
+        float vyaw;
+        // Calculate the angle error between the current and target yaw
+        float angleError = targetYaw_ - currentYaw_;
+
+        // Normalize the angle error to be between -pi and pi
+        while (angleError > M_PI) angleError -= 2 * M_PI;
+        while (angleError <= -M_PI) angleError += 2 * M_PI;
+
+        // If the angle error is within the threshold, stop turning
+        if (abs(angleError) < 0.01745) { // 0.01745 rad = 1 deg threshold
+            // Stop rotation
+            vyaw = 0;
+            phase_ = 2; // Move to the next phase (moving forward)
+        } else {
+            // Set rotation speed proportional to angle error (basic P controller)
+            float kP = 1.0;
+            vyaw = kP * angleError;
+            // Cap at max speed
+            if (vyaw > maxSpeed) vyaw = maxSpeed;
+            if (vyaw < -maxSpeed) vyaw = -maxSpeed;
+        }
+
+        sportClient_.Move(reqMsg_, 0, 0, vyaw);
+        reqPuber_->publish(reqMsg_);
+    }
+
+    void forward() {
+        float vx, vyaw;
+
+        // Calculate the Euclidean distance to the target
+        float distanceError = sqrt(pow(targetX_ - currentX_, 2) + pow(targetY_ - currentY_, 2));
+
+        // Calculate the direction of the error
+        if (previousDistanceError_ > 0 && distanceError > previousDistanceError_) distanceError *= -1;
+        if (previousDistanceError_ < 0 && -distanceError < previousDistanceError_) distanceError *= -1;
+        previousDistanceError_ = distanceError;
+
+        // If the robot is close enough (0.1 m) to the target, stop moving
+        if (distanceError < 0.1) {
+            vx = 0;
+            vyaw = 0;
+            phase_ = 3; // Move to the stopping phase
+            RCLCPP_INFO(get_logger(), "Target reached: (%f, %f)", currentX_, currentY_);
+        } else {
+            // Set forward velocity (considering a simple P controller)
+            float kP = 0.4;
+            vx = kP * distanceError;
+
+            // Cap at max speed
+            if (vx > maxSpeed) vx = maxSpeed;
+            if (vx < -maxSpeed) vx = -maxSpeed;
+
+            vyaw = 0; // Maintain current heading
+
+            // Compensate for drift: Adjust the heading if necessary
+            float headingError = targetYaw_ - currentYaw_;
+
+            // Normalize the heading error to be between -π and π
+            while (headingError > M_PI) headingError -= 2 * M_PI;
+            while (headingError <= -M_PI) headingError += 2 * M_PI;
+
+            // Correct the path if the heading error is significant (0.05 rad)
+            if (abs(headingError) > 0.05) {
+                vyaw = (headingError > 0) ? 0.1 : -0.1; // Apply a small rotation to correct heading
+            }
+
+            sportClient_.Move(reqMsg_, vx, 0, vyaw);
+            reqPuber_->publish(reqMsg_);
+        }
     }
 
     void stateCallback(unitree_go::msg::SportModeState::SharedPtr data)
@@ -113,13 +171,12 @@ private:
     SportClient sportClient_;
 
     float currentX_, currentY_, currentYaw_; 
+    float previousX_, previousY_, previousYaw_; 
     float targetX_, targetY_, targetYaw_;
-    float vx_, vy_, vyaw_;
-    
-    bool startTimer_;
-    bool targetReached_;
 
-    float error_, prevError_, integral_, derivative_;
+    float previousDistanceError_;
+    
+    int phase_;     // 0: default do nothing, 1: start moving
 };
 
 int main(int argc, char *argv[])
