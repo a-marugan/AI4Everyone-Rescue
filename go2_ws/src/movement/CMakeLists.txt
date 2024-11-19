@@ -32,10 +32,14 @@ ament_target_dependencies(move_to_location ${DEPENDENCY_LIST})
 add_executable(path_planning src/path_planning.cpp)
 ament_target_dependencies(path_planning ${DEPENDENCY_LIST})
 
+add_executable(keyboard_control src/keyboard_control.cpp src/common/ros2_sport_client.cpp)
+ament_target_dependencies(keyboard_control ${DEPENDENCY_LIST})
+
 install(TARGETS
   back_and_forth
   move_to_location
   path_planning
+  keyboard_control
   DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY
